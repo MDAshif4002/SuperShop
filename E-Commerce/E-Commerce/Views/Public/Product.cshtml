@@ -1,0 +1,45 @@
+﻿@model IEnumerable<E_Commerce.Models.product>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_PublicLayout";
+}
+<style>
+    .main{
+        height: auto;
+        background:white;
+        border-radius:5px;
+        margin-left:28px;
+        box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
+    }
+
+    .col {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
+</style>
+<br /><br />
+<h1 class="text-center text-primary">Men Fashions</h1>
+<br />
+<div class="row mb-5 mt-5">
+    <div class="col-sm-12 col">
+        @foreach (var x in Model)
+        {
+            <div class="main">
+                <img src="~/menproduct/@x.productimage" style="height:300px; width:300px; border-radius:5px; margin:8px;" />
+                <p class="ms-3 fs-5">@x.productname</p>
+                <p class="ms-3">@x.description</p>
+                <p class="ms-3 fs-5">Price : @x.price <span style="color:gray;">@x.discountprice% OFF</span></p>
+                <div class="row d-flex g-1 justify-content-center align-items-center">
+                    <div class="col-sm-5">
+                        <button class="btn btn-outline-primary w-100 mb-3">Buy Now</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-outline-success w-100 mb-3">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
